@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fun Friday Jamming</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.top-text h2 {
+  color: #a3e635;
+  letter-spacing: 3px;
+}
+
+.top-text h1 {
+  font-size: 90px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 5px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 600px;
+  perspective: 1200px;
+  margin-top:40px;
+}
+
+/* NEON RING */
+.ring {
+  position: absolute;
+  width: 700px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #22c55e, #a855f7);
+  filter: blur(60px);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+}
+
+/* GUITAR */
+.center-img {
+  position: absolute;
+  width: 280px;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 30px #a3e635);
+}
+
+/* CAROUSEL */
+.carousel {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%);
+  animation: spin 20s linear infinite;
+}
+
+/* CARDS */
+.carousel img {
+  position: absolute;
+  width: 160px;
+  height: 220px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
+
+.carousel img:hover {
+  transform: scale(1.1);
+}
+
+/* POSITION */
+.carousel img:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
+.carousel img:nth-child(2) { transform: rotateY(60deg) translateZ(350px); }
+.carousel img:nth-child(3) { transform: rotateY(120deg) translateZ(350px); }
+.carousel img:nth-child(4) { transform: rotateY(180deg) translateZ(350px); }
+.carousel img:nth-child(5) { transform: rotateY(240deg) translateZ(350px); }
+.carousel img:nth-child(6) { transform: rotateY(300deg) translateZ(350px); }
+
+/* ROTATION */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotateY(0deg); }
+  to { transform: translate(-50%, -50%) rotateY(360deg); }
+}
+
+/* FORM GLASS */
+.form-box {
+
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 30px rgba(163,230,53,0.2);
+}
+
+/* INPUT */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #a3e635, #22c55e);
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: black;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 40px #a3e635;
+  transition: 0.4s;
+}
+
+.popup.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+/* BRAND LINE */
+.brand p {
+  color: #aaa;
+  letter-spacing: 3px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* TAGS */
+.tags {
+  margin-top: 10px;
+  color: #ccc;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.tags span {
+  margin: 0 5px;
+}
+
+.event-info {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  gap: 50px;
+
+  padding: 15px 30px;
+  border-radius: 50px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 
+    0 0 20px rgba(163,230,53,0.4),
+    0 0 40px rgba(168,85,247,0.3);
+
+  z-index: 10;
+}
+
+/* EACH ITEM */
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-box span {
+  font-size: 20px;
+}
+
+/* TEXT */
+.info-box h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #a3e635;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 12px;
+  color: #ccc;
+}
+.event-info {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px #22c55e, 0 0 20px #a855f7;
+  }
+  50% {
+    box-shadow: 0 0 25px #22c55e, 0 0 50px #a855f7;
+  }
+  100% {
+    box-shadow: 0 0 10px #22c55e, 0 0 20px #a855f7;
+  }
+}
+.footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* CONTACT ROW */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+/* EACH ITEM */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccc;
+}
+
+.contact-item i {
+  color: #a3e635;
+  font-size: 18px;
+}
+
+/* LINKS */
+.contact-item a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: #a3e635;
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+  margin: 0 10px;
+  font-size: 22px;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #a3e635;
+  transform: scale(1.2);
+}
+
+/* COPYRIGHT */
+.copyright {
+  font-size: 14px;
+  color: #888;
+  margin-top: 20px;
+}
+.music-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.music-popup.show {
+  transform: scale(1);
+}
+
+.popup-content {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 320px;
+  transition: 0.3s;
+}
+
+/* TYPE COLORS */
+.popup-success {
+  box-shadow: 0 0 20px #22c55e, 0 0 40px #22c55e;
+}
+
+.popup-error {
+  box-shadow: 0 0 20px #ef4444, 0 0 40px #ef4444;
+}
+
+.popup-warning {
+  box-shadow: 0 0 20px #facc15, 0 0 40px #facc15;
+}
+
+.popup-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="brand">
+  <p>ABC SCHOOL OF MUSIC PRESENTS</p>
+</div>
+
+<div class="top-text">
+  <h2>FUN FRIDAY</h2>
+  <h1>JAMMING SESSION</h1>
+
+  <div class="tags">
+    <span>LIVE MUSIC</span>
+    <span>•</span>
+    <span>OPEN MIC</span>
+    <span>•</span>
+    <span>CHILL VIBES</span>
+  </div>
+</div>
+
+<div class="hero">
+
+  <div class="ring"></div>
+
+  <div class="carousel">
+    <img src="images/img1.jpg">
+    <img src="images/img2.jpg">
+    <img src="images/img3.jpg">
+    <img src="images/img4.jpg">
+    <img src="images/img5.jpg">
+    <img src="images/img7.jpg">
+    <img src="images/img8.jpg">
+    <img src="images/img9.jpg">
+     <img src="images/img10.jpg">
+    <img src="images/guitar.png">
+
+  </div>
+  
+    <div class="event-info">
+  
+  <div class="info-box">
+    <span>📅</span>
+    <div>
+      <h4>THIS FRIDAY</h4>
+      <p>8 May 2026</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <span>⏰</span>
+    <div>
+      <h4>7:00 PM</h4>
+      <p>Onwards</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <span>📍</span>
+    <div>
+      <h4>ABC Studio</h4>
+      <p>Nagpur</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- FORM -->
+<form id="form" action="https://formspree.io/f/mvzlgrap" method="POST" class="form-box">
+
+  <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+<input type="email" id="email" name="_replyto" placeholder="Email" required>
+
+  <input type="tel" id="phone" name="phone" placeholder="WhatsApp Number" required>
+
+  <select id="instrument" name="instrument" required>
+    <option value="">Select Instrument / Singing</option>
+    <option>Guitar</option>
+    <option>Piano</option>
+    <option>Drums</option>
+    <option>Singing</option>
+  </select>
+
+  <button type="submit">REGISTER NOW</button>
+
+  <input type="hidden" name="_subject" value="🎸 New Jamming Registration">
+
+<input type="hidden" name="_template" value="table">
+
+<input type="hidden" name="_captcha" value="false">
+
+<!-- <input type="hidden" name="_replyto" id="replyto"> -->
+
+
+<input type="hidden" name="_autoresponse" 
+value="🎸 You are successfully registered!
+
+Hi there,
+
+Your seat is confirmed for Fun Friday Jamming 🔥
+
+📅 Date: 8 May, 2026
+⏰ Time: 7:00 PM
+📍 Venue: ABC School of Music
+
+Get ready for:
+• Live Music
+• Open Mic
+• Chill Vibes
+
+See you there 🎶">
+
+</form>
+
+<!-- POPUP -->
+<div class="music-popup" id="musicPopup">
+  <div class="popup-content">
+
+    <div class="popup-icon" id="popupIcon">🎸</div>
+
+    <h3 id="popupTitle">Title</h3>
+    <p id="popupMessage">Message</p>
+
+    <button onclick="closePopup()">OK</button>
+
+  </div>
+</div>
+<audio id="successSound" src="sound/guitarsound.wav" preload="auto"></audio>
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>ABC School of Music, Nagpur</span>
+    </div>
+
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <a href="tel:+919999999999">+91 99999 99999</a>
+    </div>
+
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:music@abc.com">music@abc.com</a>
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 ABC School of Music. All Rights Reserved.
+  </div>
+
+</footer>
+<script>
+  let soundUnlocked = false;
+
+document.addEventListener("click", () => {
+  if (!soundUnlocked) {
+    const sound = document.getElementById("successSound");
+    sound.play().then(() => {
+      sound.pause();
+      sound.currentTime = 0;
+      soundUnlocked = true;
+    }).catch(() => {});
+  }
+});
+document.getElementById("form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let instrument = document.getElementById("instrument").value;
+
+  // NAME VALIDATION
+  if (name.length < 3) {
+    showPopup("error", "Invalid Name", "Name must be at least 3 characters");
+    return;
+  }
+
+  // EMAIL VALIDATION
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    showPopup("error", "Invalid Email", "Enter a valid email address");
+    return;
+  }
+
+  // PHONE VALIDATION (India 10 digit)
+  let phonePattern = /^[6-9]\d{9}$/;
+  if (!phone.match(phonePattern)) {
+   
+  showPopup("error", "Invalid Phone", "Enter valid 10-digit phone number");
+    return;
+  }
+
+  // INSTRUMENT VALIDATION
+  if (!instrument) {
+    showPopup("error", "Invalid Instrument", "Please select an instrument");
+    return;
+  }
+
+  // DUPLICATE CHECK (basic)
+  let users = JSON.parse(localStorage.getItem("registrations")) || [];
+  // let exists = users.some(u => u.email === email || u.phone === phone);
+
+  // if (exists) {
+  //   showPopup("warning", "Already Registered", "You have already signed up");
+  //   return;
+  // }
+
+  // SEND DATA TO FORMSPREE
+  let formData = new FormData(this);
+// document.getElementById("replyto").value = email;
+// let response = { ok: true };
+  let response = await fetch(this.action, {
+    method: "POST",
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    // SAVE LOCALLY
+    users.push({ email, phone });
+    localStorage.setItem("registrations", JSON.stringify(users));
+     playSound();
+    showPopup("success", "🎸 Registered!", "See you at the jam 🔥");
+    this.reset();
+
+  } else {
+    showPopup("error", "Registration Failed", "Something went wrong. Try again.");   
+  }
+
+});
+
+
+function playSound() {
+  const sound = document.getElementById("successSound");
+  sound.currentTime = 0;
+
+  sound.play().catch(err => {
+    console.log("Audio blocked:", err);
+  });
+}
+function showPopup(type, title, message) {
+  const popup = document.getElementById("musicPopup");
+  const content = popup.querySelector(".popup-content");
+
+  // reset classes
+  content.classList.remove("popup-success", "popup-error", "popup-warning");
+
+  // set type
+  if (type === "success") {
+    content.classList.add("popup-success");
+    document.getElementById("popupIcon").innerText = "🎸";
+  } 
+  else if (type === "error") {
+    content.classList.add("popup-error");
+    document.getElementById("popupIcon").innerText = "❌";
+  } 
+  else {
+    content.classList.add("popup-warning");
+    document.getElementById("popupIcon").innerText = "⚠️";
+  }
+
+  document.getElementById("popupTitle").innerText = title;
+  document.getElementById("popupMessage").innerText = message;
+
+  popup.classList.add("show");
+}
+
+function closePopup() {
+  document.getElementById("musicPopup").classList.remove("show");
+}
+
+</script>
+</body>
+</html>
